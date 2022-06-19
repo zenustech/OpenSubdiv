@@ -48,12 +48,12 @@ if (NOT NO_LIB)
         endif()
     endif()
 
-    if( TBB_FOUND )
-        include_directories("${TBB_INCLUDE_DIR}")
-        list(APPEND PLATFORM_CPU_LIBRARIES
-            ${TBB_LIBRARIES}
-        )
-    endif()
+    #if( TBB_FOUND )
+        #include_directories("${TBB_INCLUDE_DIR}")
+        #list(APPEND PLATFORM_CPU_LIBRARIES
+            #${TBB_LIBRARIES}
+        #)
+    #endif()
 
     if(OPENGL_FOUND OR OPENCL_FOUND OR DXSDK_FOUND OR METAL_FOUND)
         add_subdirectory(tools/stringify)
@@ -240,11 +240,11 @@ if (NOT NO_LIB)
 
     # Build frameworks  ----------------------------------
     if(APPLE)
-        get_directory_property(OSD_HEADER_FILES DIRECTORY ${CMAKE_SOURCE_DIR}/opensubdiv/osd DEFINITION PUBLIC_HEADER_FILES)
-        get_directory_property(FAR_HEADER_FILES DIRECTORY ${CMAKE_SOURCE_DIR}/opensubdiv/far DEFINITION PUBLIC_HEADER_FILES)
-        get_directory_property(SDC_HEADER_FILES DIRECTORY ${CMAKE_SOURCE_DIR}/opensubdiv/sdc DEFINITION PUBLIC_HEADER_FILES)
-        get_directory_property(HBR_HEADER_FILES DIRECTORY ${CMAKE_SOURCE_DIR}/opensubdiv/hbr DEFINITION PUBLIC_HEADER_FILES)
-        get_directory_property(VTR_HEADER_FILES DIRECTORY ${CMAKE_SOURCE_DIR}/opensubdiv/vtr DEFINITION PUBLIC_HEADER_FILES)
+        get_directory_property(OSD_HEADER_FILES DIRECTORY ${PROJECT_SOURCE_DIR}/opensubdiv/osd DEFINITION PUBLIC_HEADER_FILES)
+        get_directory_property(FAR_HEADER_FILES DIRECTORY ${PROJECT_SOURCE_DIR}/opensubdiv/far DEFINITION PUBLIC_HEADER_FILES)
+        get_directory_property(SDC_HEADER_FILES DIRECTORY ${PROJECT_SOURCE_DIR}/opensubdiv/sdc DEFINITION PUBLIC_HEADER_FILES)
+        get_directory_property(HBR_HEADER_FILES DIRECTORY ${PROJECT_SOURCE_DIR}/opensubdiv/hbr DEFINITION PUBLIC_HEADER_FILES)
+        get_directory_property(VTR_HEADER_FILES DIRECTORY ${PROJECT_SOURCE_DIR}/opensubdiv/vtr DEFINITION PUBLIC_HEADER_FILES)
 
 
         foreach(file ${OSD_HEADER_FILES})
@@ -353,7 +353,7 @@ if (NOT NO_LIB)
             foreach(file ${PUBLIC_HEADER_FILES})
                 add_custom_command(TARGET osd_dynamic_framework POST_BUILD
                     COMMAND ${CMAKE_COMMAND} -E copy
-                    "${CMAKE_SOURCE_DIR}/opensubdiv/${file}"
+                    "${PROJECT_SOURCE_DIR}/opensubdiv/${file}"
                     "$<TARGET_FILE_DIR:osd_dynamic_framework>/Headers/${file}"
                 )
             endforeach(file)

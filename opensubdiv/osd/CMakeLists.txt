@@ -87,24 +87,24 @@ set(TBB_PUBLIC_HEADERS
     tbbKernel.h
 )
 
-if( TBB_FOUND )
-    include_directories("${TBB_INCLUDE_DIR}")
+#if( TBB_FOUND )
+    #include_directories("${TBB_INCLUDE_DIR}")
 
-    list(APPEND CPU_SOURCE_FILES
-        tbbEvaluator.cpp
-        tbbKernel.cpp
-    )
+    #list(APPEND CPU_SOURCE_FILES
+        #tbbEvaluator.cpp
+        #tbbKernel.cpp
+    #)
 
-    list(APPEND PUBLIC_HEADER_FILES ${TBB_PUBLIC_HEADERS})
+    #list(APPEND PUBLIC_HEADER_FILES ${TBB_PUBLIC_HEADERS})
 
-    if (CMAKE_COMPILER_IS_GNUCXX)
-        list(APPEND PLATFORM_CPU_LIBRARIES gomp)
-    endif()
+    #if (CMAKE_COMPILER_IS_GNUCXX)
+        #list(APPEND PLATFORM_CPU_LIBRARIES gomp)
+    #endif()
 
-    list(APPEND PLATFORM_CPU_LIBRARIES
-        ${TBB_LIBRARIES}
-    )
-endif()
+    #list(APPEND PLATFORM_CPU_LIBRARIES
+        #${TBB_LIBRARIES}
+    #)
+#endif()
 
 list(APPEND DOXY_HEADER_FILES ${TBB_PUBLIC_HEADERS})
 

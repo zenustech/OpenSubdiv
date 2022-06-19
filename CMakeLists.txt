@@ -321,7 +321,7 @@ option(NO_GLFW_X11 "Disable GLFW components depending on X11" OFF)
 
 option(OPENSUBDIV_GREGORY_EVAL_TRUE_DERIVATIVES "Enable true derivative evaluation for Gregory basis patches" OFF)
 
-option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+#option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 # Save the current value of BUILD_SHARED_LIBS and restore it after
 # processing Find* modules, since some of the Find* modules invoked
